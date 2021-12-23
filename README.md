@@ -15,11 +15,12 @@
   /codes        # 발제 내용 기반 예시 코드 등 작성 시 해당 디렉토리에 업로드
   ```
 - 발제 파일 명명 방식: ```chapter01_발제자(e.g. eunsiklee.확장자)```
+- 발제 파일 형식: Markdown, ipynb, pdf 등 자유형식
 ## Contributors
-- 남수연(@mori8)
-- 박상일(@shyram)
-- 서희(@0hee0)
-- 이은식(@emphasis10)
+- 남수연([@mori8](https://github.com/mori8))
+- 박상일([@shyram](https://github.com/shyram))
+- 서희([@0hee0](https://github.com/0hee0))
+- 이은식([@emphasis10](https://github.com/emphasis10))
 
 ## 그 외의 것들
 - 패널티는 따로 정하지 않지만 추후 스터디 운영 상태에 따라 추가될 수 있습니다.
