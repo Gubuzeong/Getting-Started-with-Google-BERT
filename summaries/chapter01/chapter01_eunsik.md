@@ -17,7 +17,7 @@ https://wikidocs.net/22893
 
 Attention(Q, K, V) = Attention value
 
-1. Query에 대해서 모든 Key와의 유사도 구함
+1. Query에 대해서 모든 Key와의 유사도 계산
 2. 유사도를 Key에 매핑된 Value에 반영
 3. 적용된 Value를 모두 더하면 -> Attention value
 
