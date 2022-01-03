@@ -57,7 +57,7 @@ Attention이 단어 의미 사이의 연관을 잘 찾는다면 좋은 결과가
 
 RNN은 순차적으로 들어가지만 Transformer는 병렬로 들어가기 때문에 구조에서 오는 순서 정보가 없음. 이를 해결하기 위해서 부가적으로 Positional Encoding을 추가해 줌. 논문의 저자들은 다음의 식을 사용함.
 
-(논문 캡쳐)
+<img alt="Encoder-Decoder Blocks" src="../../images/chap1_2.png" width="500"/>
 
 위치 인코딩 P를 계산 + 임베딩 행렬 X
 
