@@ -49,7 +49,7 @@ Attention(Q, K, V) = Attention value
 
 ### Multi-head Attention(MHA)
 
-Attention이 단어 의미 사이의 연관을 잘 찾는다면 좋은 결과가 나오지만, 그렇지 않는다면 문장의 의미가 잘못 해석될 수도 있음. MHA는 여러 개의 Attention을 사용하여 정확한 문장의 의미를 이해하는데 도움을 준다. 구체적인 방법으로는 MHA의 결과로 나온 각각의 Attention vector를 더하는 방법을 사용한다.
+Attention이 단어 의미 사이의 연관을 잘 찾는다면 좋은 결과가 나오지만, 그렇지 않는다면 문장의 의미가 잘못 해석될 수도 있음. MHA는 여러 개의 Attention을 사용하여 정확한 문장의 의미를 이해하는데 도움을 준다. 구체적인 방법으로는 MHA의 결과로 나온 각각의 Attention vector를 concat하고 새로운 가중치 행렬 W^0를 곱하는 방법을 사용한다. (Attention head의 최종 결과는 Attention head의 원래 크기이므로 크기를 줄이기 위해 W_0을 곱하는 것)
 
 → 옮긴이의 코멘트에는 “헤드를 여러 개 사용해 어텐션을 사용할 경우 단일 헤드를 사용하는 경우보다 오분류가 일어날 위험을 줄이는 것으로 해석할 수 있다.”라고 되어있는데, Attention 결과의 앙상블 개념으로 생각하면 좋을 것 같습니다.
 
@@ -94,9 +94,48 @@ RNN은 순차적으로 들어가지만 Transformer는 병렬로 들어가기 때
 ### Multi-head Attention
 
 - Decoder의 MHA는 이전 sublayer의 출력(M)과, Encoder의 출력(R)을 입력으로 받음.
+- Encoder-Decoder attention layer: Encoder의 결과와 Decoder의 결과 사이의 상호작용이 일어나는 곳
 - 행렬 M으로 Q를 만들고, R로 K, V를 생성
     - 일반적으로 Q는 target 문장의 표현을 포함하기 때문에 M에서 가져옴
     - K, V는 입력 문장의 표현을 가져서 R을 참조
+    - Q, K, V가 어디서 왔는지를 제외하면 다른 과정들은 Encoder의 MHA와 동일함.
+
+### FFN, add, norm
+
+Encoder와 동일
+
+### Linear, Softmax Layer
+
+- **REMIND: Decoder는 입력 단어들(<sos> + 지금까지 예측한 단어들)을 입력받아서 다음 단어를 예측**
+- Linear layer는 마지막 decoder의 최상위 output을 input으로 받아서 vocab 크기와 같은 logit을 출력
+- 이 logit을 softmax에 넣어주면 확률값으로 변환 가능
+- vocab에서 가장 큰 확률을 가지는 단어를 argmax로 찾아내면 → 그 단어가 예측된 다음 단어
+
+## Transformer 학습
+
+- Decoder가 vocab에 대한 확률 분포를 예측하고 확률이 가장 큰 단어를 선택함
+- 실제 확률 분포와 모델이 예측하는 확률 분포의 차이를 줄여나가는 방법으로 학습
+- loss function으로 cross-entropy를 사용
+- optimizer는 Adam을 사용
+- overfitting을 막기 위해 각 sublayer의 output, embedding, positional encoding의 합을 구할 때 Dropout을 적용
+
+## Summary
+
+- Self-attention은 단어를 좀 더 잘 이해하기 위해 주어진 문장의 모든 단어와 해당 단어를 연결
+- Query, Key, Value Matrix의 사용
+- Positional Encoding
+- Encoder - FFN, add, norm
+- Decoder - Masked MHA, Encoder-decoder attention, FFN
+- Encoder-Decoder가 결합한 상태에서 어떻게 작동하는지
+
+## 연습문제
+
+1. 셀프 어텐션의 전체 단계를 설명하라.
+2. 스케일 닷 프로덕트 어텐션을 정의하라.
+3. 쿼리, 키, 밸류 행렬은 어떻게 생성하는가?
+4. 위치 인코딩이 필요한 이유는 무엇인가?
+5. 디코더의 서브레이어에는 무엇이 있는가?
+6. 디코더의 인코더-디코더 어텐션 레이어의 입력은 무엇인가?
 
 ## Reference
 
