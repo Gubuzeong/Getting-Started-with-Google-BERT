@@ -77,14 +77,14 @@ RNN은 순차적으로 들어가지만 Transformer는 병렬로 들어가기 때
 
 - Encoder의 결과값을 가져와서 Decoder의 입력값으로 사용하여 타깃을 생성
 - Decoder는 **이전 Decoder의 출력**과 **Encoder의 출력**을 입력으로 사용함
-    - <sos> + 문장 embedding → 첫 단어 생성
-    - <sos> 첫 단어 + 문장 embedding → 첫 단어 두번째 단어 생성
-    - <eos>가 나올 때까지 반복
+    - \<sos> + 문장 embedding → 첫 단어 생성
+    - \<sos> 첫 단어 + 문장 embedding → 첫 단어 두번째 단어 생성
+    - \<eos>가 나올 때까지 반복
 - Decoder의 입력도 Positional Embedding을 더해서 사용
 
 ### Masked Multi-head Attention(Masked MHA)
 
-- Decoder에서는 앞에 <sos>를 붙여서 input으로 넣으면, output으로 맨 뒤에 <eos>를 붙여서 결과가 나옴
+- Decoder에서는 앞에 \<sos>를 붙여서 input으로 넣으면, output으로 맨 뒤에 \<eos>를 붙여서 결과가 나옴
 - 한 단계 shifted된 문장을 출력
 - Self-attention은 각 단어의 의미를 이해하기 위해 각 단어와 전체 단어를 연결함.
 - Decoder에서는 이전 단계에서 생성한 단어까지만 들어감
@@ -106,7 +106,7 @@ Encoder와 동일
 
 ### Linear, Softmax Layer
 
-- **REMIND: Decoder는 입력 단어들(<sos> + 지금까지 예측한 단어들)을 입력받아서 다음 단어를 예측**
+- **REMIND: Decoder는 입력 단어들(\<sos> + 지금까지 예측한 단어들)을 입력받아서 다음 단어를 예측**
 - Linear layer는 마지막 decoder의 최상위 output을 input으로 받아서 vocab 크기와 같은 logit을 출력
 - 이 logit을 softmax에 넣어주면 확률값으로 변환 가능
 - vocab에서 가장 큰 확률을 가지는 단어를 argmax로 찾아내면 → 그 단어가 예측된 다음 단어
