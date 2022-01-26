@@ -166,23 +166,27 @@ print(' '.join(tokens[start_index:end_index+1]))
 
 # Questions
 
-1. 현업에서 Fine-tuning 어떻게 하는지?
+## 현업에서 Fine-tuning 어떻게 하는지?
    - https://klue-benchmark.com/
    - https://huffon.github.io/2019/11/16/glue/
    - https://gluebenchmark.com/
    - https://korquad.github.io/
    - https://blog.naver.com/skelterlabs/222025030327
-2. Weight를 freezing 하면 어떤 효과가 있는지?
+
+
+## Weight를 freezing 하면 어떤 효과가 있는지?
+Layer Freezing을 한다는 것은 accuracy를 크게 떨어뜨리지 않으면서 computation cost를 절약하는 것이 목적이다. Dropout이나 Stochastic Depth 같은 것을 보면 모든 layer를 학습시키지 않으면서 네트워크를 효과적으로 학습할 수 있다는 것을 볼 수 있다.
+
+### FreezeOut
+Vision 관련 논문. Pretraining 후에 Fine-tuning을 통해서 최종 Task에 맞는 Weight를 업데이트 함. 이 때, 앞쪽 layer들이 대부분 budget을 많이 차지하는 것에 비해 Parameter가 적고 상당히 간단한 설정으로 수렴하는데, 이는 대부분의 Parameter들이 있는 이후에 나오는 layer들에 비해서 fine-tuning이 필요하지는 않다고 가정할 수 있음. 이미 local minimum에 도달했다고 볼 수 있다.
+
+VGG에서의 실험결과에서 FreezeOut이 잘 맞지 않는 것으로 나타났는데, skip connection(dense나 residual도)이 FreezeOut이 동작 가능하게 해주는 중요한 요소인 것 같다고 함 → NLP에 적용했을 때는?
+
+### References
    - https://raphaelb.org/posts/freezing-bert
-
-# Few-shot, One-shot, Zero-shot
-
-- https://velog.io/@tobigs-gm1/Few-shot-Learning-Survey
-- https://www.kakaobrain.com/blog/106
-
-# Fine-tuning 논문, Intermediate task 논문
-
-- https://arxiv.org/pdf/2005.00628.pdf
+   - https://analyticsindiamag.com/what-does-freezing-a-layer-mean-and-how-does-it-help-in-fine-tuning-neural-networks/
+   - https://stats.stackexchange.com/questions/393168/what-does-it-mean-to-freeze-or-unfreeze-a-model/393171
+   - https://arxiv.org/pdf/1706.04983.pdf
 
 # References
 
