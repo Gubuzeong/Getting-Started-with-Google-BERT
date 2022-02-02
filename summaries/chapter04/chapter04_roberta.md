@@ -83,3 +83,9 @@ tokenizer.tokenize('It was a great day')
 - Static Masking
 - 큰 Batch size
 - BBPE Tokenizer
+
+## References
+
+- https://jeongukjae.github.io/posts/3-roberta-review/
+- https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=jjys9047&logNo=221671424019
+- https://brunch.co.kr/@choseunghyek/7
