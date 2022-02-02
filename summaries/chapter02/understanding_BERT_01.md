@@ -1,4 +1,4 @@
-BERT란 무엇인가
+## BERT란 무엇인가
 
 BERT(Bidirectional Encoder Representation from Transformer) : Google에서 만든 문맥을 고려한 Transformer 기반 고성능 텍스트 임베딩 모델.
 
@@ -54,9 +54,9 @@ BERT에 데이터를 입력하기 전에 세 가지 임베딩 레이어를 통�
 #### 토큰 임베딩
 
 -   문장 쌍(Sentence pair)은 합쳐져서 단일 시퀀스로 입력되며, 입력 내의 쌍은 한 개 혹은 두 개의 문장으로 이루어져 있을 수 있다.
-    -   예시: QA Task - \[Question(1문장), Paragraph(2문장)\]
+    -   예시: QA Task - \[Question, Paragraph]
         -   Q: What is your favorite programming language?
-        -   A: My favorite programming language is Python. It's easy to use.
+        -   A: My favorite programming language is Python.
 -   Sentence의 시작 부분에 `[CLS]`라는 토큰을 추가한다.
     -   분류 문제를 풀 때만 사용되지만 다른 문제를 풀더라도 무조건 추가해야 한다.
 -   Sentence 내 모든 문장의 끝에 `[SEP]`라는 새 토큰을 추가한다.
@@ -135,7 +135,7 @@ tokens = [[CLS], let, us, start, [MASK], [MASK], [MASK], the, model, [SEP]]
 
 ![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FD174B%2Fbtrq8JFSKdF%2FseB75GL8Ustkoq4v9JtzrK%2Fimg.png)
 
-토큰화와 WWM을 거친 후에 입력 토큰을 토큰, 세그먼트, 위치 임베딩 레이어에 입력해 입력 임베딩을 얻을 수 있다. 이 입력 임베딩을 BERT에 제공하면 BERT는 각 토큰의 표현 $R$을 출력한다. 각 단어들의 표현들($R$) 중 마스크된 토큰의 표현 벡터 $R\_{\[MASK\]}$을 소프트맥스 활성화를 통해 피드포워드 네트워크에 입력하면, 그 출력으로 각 단어가 \[MASK\] 자리에 있어야 할 단어일 확률을 반환한다.
+토큰화와 WWM을 거친 후에 입력 토큰을 토큰, 세그먼트, 위치 임베딩 레이어에 입력해 입력 임베딩을 얻을 수 있다. 이 입력 임베딩을 BERT에 제공하면 BERT는 각 토큰의 표현 $R$을 출력한다. 각 단어들의 표현들($R$) 중 마스크된 토큰의 표현 벡터 $R_{MASK}$을 소프트맥스 활성화를 통해 피드포워드 네트워크에 입력하면, 그 출력으로 각 단어가 \[MASK\] 자리에 있어야 할 단어일 확률을 반환한다.
 
 #### 다음 문장 예측 Next Sentence Prediction
 
