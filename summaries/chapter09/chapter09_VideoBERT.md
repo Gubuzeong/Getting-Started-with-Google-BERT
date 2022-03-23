@@ -4,7 +4,7 @@
 
 **VideoBERT** 📄 [VideoBERT: A Joint Model for Video and Language Representation Learning](https://arxiv.org/pdf/1904.01766.pdf)
 
-![text-to-video generation and future forcasting examples](https://d3i71xaburhd42.cloudfront.net/c41a11c0e9b8b92b4faaf97749841170b760760a/2-Figure2-1.png)
+![text-to-video generation and future forcasting examples](../../images/chap9_videobert.png)
 
 - 영상과 언어의 표현을 동시에 배우는 최초의 BERT 모델
 - 이미지 캡션 생성, 비디오 캡션, 비디오의 다음 프레임 예측 등과 같은 태스크에 사용
@@ -49,7 +49,7 @@
 
   - VideoBERT에서 반환된 마스크된 표현을 분류기(피드포워드 + 소프트맥스)에 입력하면, 분류기는 <u>마스크된 토큰 예측</u>
 
-  ![cloze task](https://d3i71xaburhd42.cloudfront.net/c41a11c0e9b8b92b4faaf97749841170b760760a/4-Figure3-1.png)
+  ![cloze task](https://production-media.paperswithcode.com/methods/Screenshot_2021-02-08_at_19.32.32_zl4NgnC.png)
 
 - **언어-시각 정렬**
 
@@ -137,7 +137,7 @@ RNN to Transformer in NLP ⇨ CNN에 self-attention 적용 ⇨ Transformer 모�
 
 ### Task
 
-![TABLE 1: A summary of key design choices adopted in different variants of transformers for a representative set of computer vision applications.](https://d3i71xaburhd42.cloudfront.net/3a906b77fa218adc171fecb28bb81c24c14dcc7b/21-Table1-1.png)
+![TABLE 1: A summary of key design choices adopted in different variants of transformers for a representative set of computer vision applications.](../../images/chap9_table1.png)
 
 ***Table 1 from Transformers in Vision: A survey***
 
@@ -155,7 +155,7 @@ RNN to Transformer in NLP ⇨ CNN에 self-attention 적용 ⇨ Transformer 모�
   - cross-modal retrieval
   - image captioning
 
-![Fig. 12: An overview of Transformer models used for multi-modal tasks in computer vision](https://d3i71xaburhd42.cloudfront.net/3a906b77fa218adc171fecb28bb81c24c14dcc7b/14-Figure12-1.png)
+![Fig. 12: An overview of Transformer models used for multi-modal tasks in computer vision](../../images/chap9_multi-modal-transformer.png)
 
 *An overview of Transformer models used for multi-modal tasks in computer vision*
 
